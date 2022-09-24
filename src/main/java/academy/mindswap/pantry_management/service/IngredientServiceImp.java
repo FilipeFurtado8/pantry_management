@@ -7,11 +7,11 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class IngredientsServiceImp implements IngredientService {
+public class IngredientServiceImp implements IngredientService {
 
     private final IngredientRepository ingredientRepository;
 
-    public IngredientsServiceImp(IngredientRepository ingredientRepository) {
+    public IngredientServiceImp(IngredientRepository ingredientRepository) {
         this.ingredientRepository = ingredientRepository;
     }
 

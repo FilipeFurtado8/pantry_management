@@ -22,5 +22,4 @@ public class IngredientController {
     public List<Ingredient> getAllIngredients() {
         return ingredientService.getAllIngredients();
     }
-
 }
