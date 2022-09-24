@@ -21,5 +21,6 @@ public class Category {
     private String type;
 
     @OneToMany(mappedBy = "category")
+    //@JsonIgnore
     private List<Ingredient> ingredientList;
 }

@@ -19,7 +19,7 @@ public class Ingredient {
     private Integer id;
     private String name;
     private LocalDate expirationDate;
-    
+
 
     @ManyToOne
     @JsonIgnore
