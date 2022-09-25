@@ -29,6 +29,21 @@ public class DataLoader {
                     .category(category)
                     .build();
             ingredientRepository.save(ingredient);
+
+            Ingredient ingredient2 = Ingredient.builder()
+                    .name("beef")
+                    .expirationDate(LocalDate.of(2022, 10, 13))
+                    .category(category)
+                    .build();
+            ingredientRepository.save(ingredient2);
+
+            Ingredient ingredient3 = Ingredient.builder()
+                    .name("tomato")
+                    .expirationDate(LocalDate.of(2022, 10, 13))
+                    .category(category)
+                    .build();
+            ingredientRepository.save(ingredient3);
+
         };
 
     }

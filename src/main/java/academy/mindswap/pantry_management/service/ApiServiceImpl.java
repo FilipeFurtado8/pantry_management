@@ -12,11 +12,11 @@ public class ApiServiceImpl implements ApiService {
 
     private final ApiHandler apiHandler;
 
-    private final IngredientRepository ingredientRepository;
+    private final IngredientService ingredientService;
 
-    public ApiServiceImpl(ApiHandler apiHandler, IngredientRepository ingredientRepository) {
+    public ApiServiceImpl(ApiHandler apiHandler, IngredientService ingredientService) {
         this.apiHandler = apiHandler;
-        this.ingredientRepository = ingredientRepository;
+        this.ingredientService = ingredientService;
     }
 
     @Override
@@ -33,22 +33,38 @@ public class ApiServiceImpl implements ApiService {
 
     @Override
     public Object get(){
-        List<String> ingredientListName = ingredientRepository
-                .findAll()
+        String[] ingredientListName = ingredientService.getAllIngredients()
                 .stream()
                 .map(Ingredient::getName)
-                .toList();
+                .toArray(String[]::new);
 
-        Object a = apiHandler.getRecipesByIngredient(ingredientListName.get(0));
+        //return apiHandler.getRecipesByIngredient(ingredientListName.get(0));
+        //return apiHandler.getRecipesByIngredient(string1, string2, string3);
 
-        /*IngredientDto ingredientDto;
+        int rangeOfIngredients = 3;
+        int stockSize = ingredientListName.length;
 
-        ingredientDto.getId();
+        String[] data=new String[rangeOfIngredients];
 
+        combinationUtil(ingredientListName, data, 0, stockSize-1, 0, rangeOfIngredients);
 
-
-         */
         return null;
+
     }
 
+    private void combinationUtil(String[] ingredientListName, String[] data, int start, int end, int index,
+                                 int rangeOfIngredients) {
+        if (index == rangeOfIngredients) {
+            for (int j=0; j<rangeOfIngredients; j++)
+                System.out.println(data[j]+", ");
+            System.out.println("");
+            return;
+        }
+
+        for (int i=start; i<=end && end-i+1 >= rangeOfIngredients-index; i++) {
+            data[index] = ingredientListName[i];
+            combinationUtil(ingredientListName, data, i+1, end, index+1, rangeOfIngredients);
+        }
+
+    }
 }
