@@ -2,9 +2,9 @@ package academy.mindswap.pantry_management.service;
 
 import academy.mindswap.pantry_management.api.ApiHandler;
 import academy.mindswap.pantry_management.model.Ingredient;
-import academy.mindswap.pantry_management.repository.IngredientRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -39,26 +39,32 @@ public class ApiServiceImpl implements ApiService {
                 .toArray(String[]::new);
 
         //return apiHandler.getRecipesByIngredient(ingredientListName.get(0));
-        //return apiHandler.getRecipesByIngredient(string1, string2, string3);
 
         int rangeOfIngredients = 3;
         int stockSize = ingredientListName.length;
 
         String[] data=new String[rangeOfIngredients];
 
-        combinationUtil(ingredientListName, data, 0, stockSize-1, 0, rangeOfIngredients);
+        System.out.println(combinationUtil(ingredientListName, data, 0, stockSize - 1, 0, rangeOfIngredients));
+
+        //return apiHandler.getRecipesByIngredients(combinationUtil(ingredientListName, data, 0, stockSize-1, 0, rangeOfIngredients));
 
         return null;
 
     }
 
-    private void combinationUtil(String[] ingredientListName, String[] data, int start, int end, int index,
-                                 int rangeOfIngredients) {
+    private List<String> combinationUtil(String[] ingredientListName, String[] data, int start, int end, int index,
+                                         int rangeOfIngredients) {
+        List<String> ingredients = new ArrayList<>();
+
         if (index == rangeOfIngredients) {
-            for (int j=0; j<rangeOfIngredients; j++)
-                System.out.println(data[j]+", ");
-            System.out.println("");
-            return;
+            for (int j=0; j<rangeOfIngredients; j++){
+                //System.out.println(data[j]+", ");
+                ingredients.add(data[j]);
+            }
+            //System.out.println("");
+            //System.out.println(ingredients);
+            return ingredients;
         }
 
         for (int i=start; i<=end && end-i+1 >= rangeOfIngredients-index; i++) {
@@ -66,5 +72,6 @@ public class ApiServiceImpl implements ApiService {
             combinationUtil(ingredientListName, data, i+1, end, index+1, rangeOfIngredients);
         }
 
+        return null;
     }
 }
