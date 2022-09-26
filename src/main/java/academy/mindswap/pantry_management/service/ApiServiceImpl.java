@@ -2,6 +2,7 @@ package academy.mindswap.pantry_management.service;
 
 import academy.mindswap.pantry_management.api.ApiHandler;
 import academy.mindswap.pantry_management.model.Ingredient;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -10,6 +11,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
+@Slf4j
 public class ApiServiceImpl implements ApiService {
 
     private final ApiHandler apiHandler;
@@ -25,11 +27,13 @@ public class ApiServiceImpl implements ApiService {
 
     @Override
     public Object getRecipesByIngredient(String ingredientName) {
+        log.info("Getting recipes by ingredient");
         return apiHandler.getRecipesByIngredient(ingredientName);
     }
 
     @Override
     public Object getRecipesByName(String name) {
+        log.info("Getting recipes by name");
         return apiHandler.getRecipesByName(name);
     }
 
