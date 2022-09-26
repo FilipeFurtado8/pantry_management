@@ -19,4 +19,21 @@ public class IngredientServiceImp implements IngredientService {
     public List<Ingredient> getAllIngredients() {
         return ingredientRepository.findAll();
     }
+
+    public Ingredient findByName(String name) {
+        return ingredientRepository.findAll().stream()
+                .filter(ingredient -> ingredient.getName().equals(name))
+                .findFirst().orElseThrow();
+    }
+
+    @Override
+    public Ingredient alterIngredient(Ingredient ingredient, String name) {
+
+        Ingredient ingredient1 = findByName(name);
+
+        ingredient1.setQuantity(ingredient.getQuantity());
+
+        return ingredientRepository.save(ingredient1);
+        
+    }
 }

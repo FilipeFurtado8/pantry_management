@@ -25,4 +25,9 @@ public class ApiController {
     public Object getRecipesByName(@PathVariable String name){
         return apiService.getRecipesByName(name);
     }
+
+    @GetMapping("/stock")
+    public Object get(){
+        return apiService.get();
+    }
 }
