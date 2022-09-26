@@ -43,25 +43,18 @@ public class ApiServiceImpl implements ApiService {
                 .map(Ingredient::getName)
                 .toArray(String[]::new);
 
-
-        //return apiHandler.getRecipesByIngredient(ingredientListName.get(0));
-
         int rangeOfIngredients = 3;
         int stockSize = ingredientListName.length;
 
         String[] data = new String[rangeOfIngredients];
 
-        return combinationUtil(ingredientListName, data, 0, stockSize - 1, 0, rangeOfIngredients);
-
-        //return apiHandler.getRecipesByIngredients(combinationUtil(ingredientListName, data, 0, stockSize-1, 0, rangeOfIngredients));
-
-
+        return apiHandler.getRecipesByIngredients(
+                combinationUtil(ingredientListName, data, 0, stockSize - 1, 0, rangeOfIngredients));
     }
 
 
     private List<List<String>> combinationUtil(String[] ingredientListName, String[] data, int start, int end, int index,
                                                int rangeOfIngredients) {
-
 
         if (index == rangeOfIngredients) {
 
@@ -80,9 +73,7 @@ public class ApiServiceImpl implements ApiService {
             }
 
             arrList.add(newArr);
-
         }
-
         return arrList.stream().map(Arrays::asList).collect(Collectors.toList());
     }
 }

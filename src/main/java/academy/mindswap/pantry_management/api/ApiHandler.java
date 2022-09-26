@@ -7,5 +7,5 @@ public interface ApiHandler {
 
     Object getRecipesByName(String name);
 
-    Object getRecipesByIngredients (List<String> ingredients);
+    Object getRecipesByIngredients (List<List<String>> ingredients);
 }
