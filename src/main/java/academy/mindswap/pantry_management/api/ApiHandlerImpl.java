@@ -9,6 +9,7 @@ import java.util.List;
 @Component
 public class ApiHandlerImpl implements ApiHandler {
 
+    private final int API_KEY = 9973533;
     private final List<Object> recipes = new ArrayList<>();
 
     @Override
@@ -32,10 +33,11 @@ public class ApiHandlerImpl implements ApiHandler {
 
             temp.add(ingredients.get(i));
 
-            final String API_RESOURCE_URL = "https://www.themealdb.com/api/json/v1/1/filter.php?i="
+            final String API_RESOURCE_URL = "https://www.themealdb.com/api/json/v2/9973533/filter.php?i="
                     + temp.get(i).get(0) + ","
-                    + temp.get(i).get(1) + ","
-                    + temp.get(i).get(2);
+                    + temp.get(i).get(1); //+ ","
+            //+ temp.get(i).get(2);
+
 
             Object a = new RestTemplate().getForObject(API_RESOURCE_URL, Object.class);
 
