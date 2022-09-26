@@ -11,17 +11,21 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@ToString(exclude = "category")
+@ToString(exclude = "user")
 public class Ingredient {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
+    private Integer quantity;
     private LocalDate expirationDate;
 
 
     @ManyToOne
-    @JsonIgnore
     private Category category;
+
+    @ManyToOne
+    @JsonIgnore
+    private User user;
 }
