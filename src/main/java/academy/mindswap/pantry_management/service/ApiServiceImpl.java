@@ -16,9 +16,7 @@ public class ApiServiceImpl implements ApiService {
 
     private final IngredientService ingredientService;
 
-    private List<String> ingredients = new ArrayList<>();
-    private List<List<String>> ingredientsList = new ArrayList<>();
-    private List<String[]> arrList = new ArrayList<>();
+    private final List<String[]> arrList = new ArrayList<>();
 
     public ApiServiceImpl(ApiHandler apiHandler, IngredientService ingredientService) {
         this.apiHandler = apiHandler;
@@ -43,7 +41,7 @@ public class ApiServiceImpl implements ApiService {
                 .map(Ingredient::getName)
                 .toArray(String[]::new);
 
-        int rangeOfIngredients = 3;
+        int rangeOfIngredients = 2;
         int stockSize = ingredientListName.length;
 
         String[] data = new String[rangeOfIngredients];
