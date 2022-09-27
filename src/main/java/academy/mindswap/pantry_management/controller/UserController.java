@@ -30,7 +30,6 @@ public class UserController {
     @PutMapping(path = "/update/{name}")
     private Ingredient alterIngredient(@RequestBody Ingredient ingredient, @PathVariable String name) {
         log.info("Updating ingredient");
-
         return userService.alterIngredient(ingredient, name);
 
     }

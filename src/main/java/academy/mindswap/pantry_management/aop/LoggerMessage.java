@@ -1,6 +1,5 @@
 package academy.mindswap.pantry_management.aop;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.*;
 
 @Builder
@@ -8,6 +7,7 @@ import lombok.*;
 @NoArgsConstructor
 @Getter
 @Setter
+
 public class LoggerMessage {
     private String className;
     private String methodName;
@@ -25,8 +25,7 @@ public class LoggerMessage {
                 ", methodArgs='" + methodArgs + '\'' +
                 ", ElapsedTimeInMillis=" + ElapsedTimeInMillis +
                 ", ElapsedTimeInNanos=" + ElapsedTimeInMicros +
-                ", result=" + new ObjectMapper().writerWithDefaultPrettyPrinter()
-                                                .writeValueAsString(this.result) +
+                ", result=" + this.result +
                 '}';
     }
 }
