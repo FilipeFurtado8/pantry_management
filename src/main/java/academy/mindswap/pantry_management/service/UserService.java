@@ -10,4 +10,6 @@ public interface UserService {
     List<User> getUser();
 
     Ingredient alterIngredient(Ingredient ingredient, String name);
+
+
 }

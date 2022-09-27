@@ -1,5 +1,8 @@
 package academy.mindswap.pantry_management.api;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
@@ -35,14 +38,15 @@ public class ApiHandlerImpl implements ApiHandler {
 
             final String API_RESOURCE_URL = "https://www.themealdb.com/api/json/v2/9973533/filter.php?i="
                     + temp.get(i).get(0) + ","
-                    + temp.get(i).get(1); //+ ","
-            //+ temp.get(i).get(2);
+                    + temp.get(i).get(1) + ","
+                    + temp.get(i).get(2);
 
+            Object jsonFromMealApi = new RestTemplate().getForObject(API_RESOURCE_URL, Object.class);
 
-            Object a = new RestTemplate().getForObject(API_RESOURCE_URL, Object.class);
+            String stringJsonFromMealApi = jsonFromMealApi.toString();
 
-            if (a != null) {
-                recipes.add(a);
+            if (!stringJsonFromMealApi.contains("null")) {
+                recipes.add(jsonFromMealApi);
             }
         }
         return recipes;
