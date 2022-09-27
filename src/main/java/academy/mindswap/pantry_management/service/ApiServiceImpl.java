@@ -41,7 +41,7 @@ public class ApiServiceImpl implements ApiService {
                 .map(Ingredient::getName)
                 .toArray(String[]::new);
 
-        int rangeOfIngredients = 2;
+        int rangeOfIngredients = 3;
         int stockSize = ingredientListName.length;
 
         String[] data = new String[rangeOfIngredients];
