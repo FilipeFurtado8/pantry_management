@@ -3,9 +3,14 @@
 <h1 align="left"></h1>
 <div align="center">
 <img src="https://i.imgur.com/5jrrqqC.png" align="center" height="250" width="250" class="logo">
-
-
-
+<style>
+img {
+  border-radius: 10%;
+}
+.logo {
+  border-radius: 18%;
+}
+</style>
   </div>
     <strong>
        <p align="center"> A simple pantry management app </p> 
