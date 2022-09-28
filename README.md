@@ -1,4 +1,5 @@
 # Pantry Management
+
 <h1 align="left"></h1>
 <div align="center">
 <img src="https://i.imgur.com/5jrrqqC.png" align="center" height="250" width="250" class="logo">
@@ -16,7 +17,8 @@ img {
     </strong>
 
 ###
-<h2 align="left">Hello there!!👋  You want to know what this application is about?✨  </h2>
+
+<h2 align="left">Hello there!!👋 You want to know what this application is about?✨  </h2>
 <p align="left"> 
 <p> &nbsp;&nbsp;&nbsp;
 This is a simple application that helps you manage your pantry. You can add, edit, delete and search for your products.
@@ -24,20 +26,19 @@ This is a simple application that helps you manage your pantry. You can add, edi
 <p>Also have this amazing feature you can search for a recipe according to the ingredients stored in the application
 fetching the data to an external API (link below) and showing the results in a list of recipes you can choose and have a
 good time in a kitchen alone or with your friend. </p>
-
-<p> More features will be added in the future. </p>
 &nbsp
-<strong>🎯 Goals:</strong>&nbsp;4
+
+<strong>🎯 Goals:</strong>&nbsp;
 &nbsp;&nbsp;
 The main goal is make your life easier by giving you the ability to manage your pantry and keep track of your products,
 expiration date and get recipes to cook and have more time in your life to have fun.
 
-<strong>👨🏼‍🍳We hope you will enjoyed.</strong>
-
+<p> More features will be added in the future. </p>
+<strong>👨🏼‍🍳  We hope you will enjoyed.</strong>
 
 <strong>✨ Creating bugs since</strong> 25/set/2022✨
-###
 
+###
 
 ## About us
 
@@ -53,7 +54,9 @@ and we are always looking for new ways to improve our skills.</p>
 This project was made within the scope of Mindera code academy, to develop and use the tools that we acquired during 
 our formation as developers</p>
 
+###
 ## Dependencies in this project
+
 ```
 lombok
 spring-boot-starter-data-jpa
@@ -66,16 +69,16 @@ mysql-connector-java
 jaxb-api
 
 ```
-
-
+###
 ## Requirements
+
 &nbsp;&nbsp;
 Before starting, you will need to have the following tools installed on your machine:
 
 &nbsp;&nbsp;
 Besides, it's good to have an editor to work with the code like [Intellij](https://www.jetbrains.com/idea/)
 
-### 🎲  Back End Rolling  (Server)
+### 🎲 Back End Rolling  (Server)
 
 ```bash
 # Clone repository
@@ -93,10 +96,11 @@ $ npm run dev:server
 
 # The server will start at port: 3306 - go to <http://localhost:3306>
 ```
-###
-
 
 ###
+
+###
+
 <h3 align="left">📚 We are currently using and learning:</h3>
 
 <br clear="both">
@@ -126,7 +130,6 @@ All kinds of contributions are very welcome and appreciated!
 <h3>🔗External API </h3>
 link: https://www.themealdb.com/api.php
 
-
 <h3 align="left">Collaborators:</h3>
 
 
@@ -143,9 +146,7 @@ link: https://www.themealdb.com/api.php
 - [@Luis Ribeiro](https://github.com/luisribeiro7)
 - [@Rui Vieira](https://github.com/filipefurtado8)
 
-
 ###
-
 
 <div align="center">
   <img height="200" src="https://c.tenor.com/_DOBjnGspYAAAAAC/code-coding.gif"  />
@@ -154,7 +155,7 @@ link: https://www.themealdb.com/api.php
 <h3 align="left">Connect with me:</h3>
 <p align="left">
 <a href="https://linkedin.com/in/augusto-furtado-540108b7" target="blank"><img align="center" 
-src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/linked-in-alt.svg" alt="ruimtvieira" height="30" width="40" /></a>
+src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/linked-in-alt.svg" alt="" height="30" width="40" /></a>
 </p>
 
 
