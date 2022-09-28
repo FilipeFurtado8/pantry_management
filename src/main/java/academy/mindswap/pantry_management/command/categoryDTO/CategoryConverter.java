@@ -12,13 +12,13 @@ public class CategoryConverter {
                 .id(category.getId())
                 .type(category.getType())
                 .ingredientListDTO(category.getIngredientList().stream()
-                        .map(ingredient -> IngredientConverter.convertToDTO(ingredient))
+                        .map(IngredientConverter::convertToDTOWithoutCategory)
                         .collect(Collectors.toList()))
                 .build();
     }
 
-    public static CategoryDTO convertToDTOWithoutIngredient(Category category) {
-        return CategoryDTO.builder()
+    public static CategoryWithoutIngredientDTO convertToDTOWithoutIngredient(Category category) {
+        return CategoryWithoutIngredientDTO.builder()
                 .id(category.getId())
                 .type(category.getType())
                 .build();

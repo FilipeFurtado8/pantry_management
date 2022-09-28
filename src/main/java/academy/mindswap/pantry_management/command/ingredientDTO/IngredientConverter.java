@@ -16,7 +16,7 @@ public class IngredientConverter {
                 .build();
     }
 
-    public static IngredientDTO convertToDTOWithoutCategory(IngredientDTO ingredient) {
+    public static IngredientDTO convertToDTOWithoutCategory(Ingredient ingredient) {
 
         return IngredientDTO.builder()
                 .name(ingredient.getName())
@@ -29,8 +29,9 @@ public class IngredientConverter {
 
         return Ingredient.builder()
                 .name(createIngredientDTO.getName())
-                .id(createIngredientDTO.getId())
                 .expirationDate(createIngredientDTO.getExpirationDate())
+                .quantity(createIngredientDTO.getQuantity())
+                .user(createIngredientDTO.getUser())
                 .category(createIngredientDTO.getCategory())
                 .build();
     }

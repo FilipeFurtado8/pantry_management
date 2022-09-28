@@ -2,6 +2,8 @@ package academy.mindswap.pantry_management.controller;
 
 import academy.mindswap.pantry_management.service.ApiService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,19 +21,31 @@ public class ApiController {
     }
 
     @GetMapping("/byIngredient/{ingredientName}")
-    public Object getRecipesByIngredient(@PathVariable String ingredientName){
-        return apiService.getRecipesByIngredient(ingredientName);
+    public ResponseEntity<Object> getRecipesByIngredient(@PathVariable String ingredientName) {
+
+        if (ingredientName == null) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+
+        return ResponseEntity.ok(apiService.getRecipesByIngredient(ingredientName));
     }
 
     @GetMapping("/{name}")
-    public Object getRecipesByName(@PathVariable String name){
+    public ResponseEntity<Object> getRecipesByName(@PathVariable String name) {
+        if (name == null) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+
         log.info("Getting recipes by name");
-        return apiService.getRecipesByName(name);
+
+        return ResponseEntity.ok(apiService.getRecipesByName(name));
     }
 
     @GetMapping("/stock")
-    public Object getRecipesByStock(){
+    public ResponseEntity<Object> getRecipesByStock() {
+
         log.info("Getting recipes by stock");
-        return apiService.getRecipesByStock();
+        
+        return ResponseEntity.ok(apiService.getRecipesByStock());
     }
 }

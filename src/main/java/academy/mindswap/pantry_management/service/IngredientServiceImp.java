@@ -3,6 +3,7 @@ package academy.mindswap.pantry_management.service;
 import academy.mindswap.pantry_management.command.ingredientDTO.CreateIngredientDTO;
 import academy.mindswap.pantry_management.command.ingredientDTO.IngredientConverter;
 import academy.mindswap.pantry_management.command.ingredientDTO.IngredientDTO;
+import academy.mindswap.pantry_management.exceptions.ResourceNotFoundException;
 import academy.mindswap.pantry_management.model.Ingredient;
 import academy.mindswap.pantry_management.repository.IngredientRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -31,7 +32,7 @@ public class IngredientServiceImp implements IngredientService {
 
     @Override
     public IngredientDTO findByName(String name) {
-        log.info("Finding ingredient by name"+name);
+        log.info("Finding ingredient by name" + name);
         return ingredientRepository.findAll().stream()
                 .filter(ingredient -> ingredient.getName().equals(name))
                 .map(IngredientConverter::convertToDTO)
@@ -54,6 +55,13 @@ public class IngredientServiceImp implements IngredientService {
                 .filter(ingredient -> ingredient.getQuantity().equals(quantity))
                 .map(IngredientConverter::convertToDTO)
                 .toList();
+    }
+
+    @Override
+    public IngredientDTO getIngredientById(Integer id) {
+        Ingredient ingredient = ingredientRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("The ingredient with this id doesn't exist. Id: " + id));
+        return IngredientConverter.convertToDTO(ingredient);
     }
 
     @Override
