@@ -15,8 +15,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static academy.mindswap.pantry_management.utils.Messages.*;
+
 @RestController
-@RequestMapping(path = "/category")
+@RequestMapping(path = CATEGORY)
 @Slf4j
 public class CategoryController {
 
@@ -28,26 +30,21 @@ public class CategoryController {
 
     @GetMapping
     public ResponseEntity<List<CategoryDTO>> getAllCategories() {
-
-        log.info("Getting all categories");
-
+        log.info(ALL_CATEGORIES);
         return ResponseEntity.ok(categoryService.getAllCategories());
     }
 
-    @GetMapping("/{type}")
+    @GetMapping(CATEGORY_BY_TYPE)
     public ResponseEntity<CategoryDTO> getCategoryByType(@PathVariable String type) {
-
         if (type == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-
-        log.info("Getting category by name");
-
+        log.info(GET_CATEGORY_BY_TYPE);
         return ResponseEntity.ok(categoryService.getCategoryByType(type));
     }
 
-    @PostMapping("/")
-    public ResponseEntity<?> addCategory(@RequestBody CreateCategoryDTO createCategoryDTO, BindingResult bindingResult) {
+    @PostMapping(BAR)
+    public ResponseEntity<?> addCategory(@Valid @RequestBody CreateCategoryDTO createCategoryDTO, BindingResult bindingResult) {
 
         if (bindingResult.hasErrors()) {
             Map<String, String> errors = new HashMap<>();
@@ -56,40 +53,29 @@ public class CategoryController {
                 String errorMessage = error.getDefaultMessage();
                 errors.put(fieldName, errorMessage);
             });
-
             return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
         }
-
-
-
         return ResponseEntity.ok(categoryService.addCategory(createCategoryDTO));
     }
 
-    @PutMapping("/{name}")
-    private ResponseEntity<CategoryDTO> alterIngredient(@RequestBody CreateCategoryDTO createCategoryDTO, @PathVariable String name) {
-
+    @PutMapping(NAME)
+    private ResponseEntity<CategoryDTO> alterIngredient(@Valid @RequestBody CreateCategoryDTO createCategoryDTO, @PathVariable String name) {
         if (name == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-
-        log.info("Updating category");
-
+        log.info(UPDATING_CATEGORY);
         return ResponseEntity.ok(categoryService.alterCategory(createCategoryDTO, name));
     }
 
-    @DeleteMapping("/")
+    @DeleteMapping(BAR)
     public ResponseEntity<String> deleteAll() {
-
         categoryService.deleteAll();
-
-        return ResponseEntity.ok("All categories were deleted!");
+        return ResponseEntity.ok(CATEGORIES_DELETED);
     }
 
-    @DeleteMapping("/{name}")
+    @DeleteMapping(NAME)
     public ResponseEntity<String> deleteCategoryByType(@PathVariable String name) {
-
         categoryService.deleteCategoryByType(name);
-
-        return ResponseEntity.ok("The category, " + name + ", was deleted!");
+        return ResponseEntity.ok(THE_CATEGORY + name + WAS_DELETED);
     }
 }

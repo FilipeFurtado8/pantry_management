@@ -2,13 +2,15 @@ package academy.mindswap.pantry_management.command.userDTO;
 
 import academy.mindswap.pantry_management.model.User;
 
+import static academy.mindswap.pantry_management.utils.Messages.UNASSIGNED;
+
 public class UserConverter {
 
     public static UserDTO convertToDTO(User user) {
         if (user == null) {
             return UserDTO.builder()
                     .id(null)
-                    .username("unassigned")
+                    .username(UNASSIGNED)
                     .build();
         }
 

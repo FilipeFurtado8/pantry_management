@@ -7,8 +7,11 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import java.time.LocalDate;
+
+import static academy.mindswap.pantry_management.utils.Messages.MIN_QUANTITY;
 
 @Data
 @Builder
@@ -17,7 +20,7 @@ import java.time.LocalDate;
 public class CreateIngredientDTO {
     @NotBlank
     private String name;
-
+    @Min(value = 0, message = MIN_QUANTITY)
     private Integer quantity;
     private LocalDate expirationDate;
     private Category category;

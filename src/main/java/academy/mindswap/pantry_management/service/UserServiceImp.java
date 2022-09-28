@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+import static academy.mindswap.pantry_management.utils.Messages.GET_ALL_USERS;
+
 @Service
 @Slf4j
 public class UserServiceImp implements UserService {
@@ -21,13 +23,11 @@ public class UserServiceImp implements UserService {
         this.ingredientService = ingredientService;
     }
 
-
     @Override
     public List<UserDTO> getUser() {
-        log.info("Getting all users");
+        log.info(GET_ALL_USERS);
         return userRepository.findAll().stream()
                 .map(UserConverter::convertToDTO)
                 .toList();
     }
-
 }

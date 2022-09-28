@@ -16,31 +16,30 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import static academy.mindswap.pantry_management.utils.Messages.*;
+
 @Component
 @EnableScheduling
 public class ApiHandlerImpl implements ApiHandler {
 
 
     @Override
-    @Cacheable(value = "ingredient")
+    @Cacheable(value = BY_INGREDIENT)
     public RecipeNameDto getRecipesByIngredient(String ingredientName) {
-        System.out.println("without cache1");
-        final String API_RESOURCE_URL = "https://www.themealdb.com/api/json/v1/1/filter.php?i=" + ingredientName;
+        final String API_RESOURCE_URL = URL_BY_ONE_INGREDIENT + ingredientName;
         return new RestTemplate().getForObject(API_RESOURCE_URL, RecipeNameDto.class);
     }
 
     @Override
-    @Cacheable(value = "name")
+    @Cacheable(value = BY_NAME)
     public RecipeDto getRecipesByName(String name) {
-        System.out.println("without cache2");
-        final String API_RESOURCE_URL = "https://www.themealdb.com/api/json/v1/1/search.php?s=" + name;
+        final String API_RESOURCE_URL = URL_BY_ONE_NAME + name;
         return new RestTemplate().getForObject(API_RESOURCE_URL, RecipeDto.class);
     }
 
     @Override
-    @Cacheable(value = "ingredients")
+    @Cacheable(value = BY_INGREDIENTS)
     public Set<RecipeNameDto> getRecipesByIngredients(List<List<String>> ingredients) {
-        System.out.println("without cache3");
 
         final Set<RecipeNameDto> recipes = new HashSet<>();
 
@@ -52,7 +51,7 @@ public class ApiHandlerImpl implements ApiHandler {
 
             temp.add(ingredients.get(i));
 
-            final String API_RESOURCE_URL = "https://www.themealdb.com/api/json/v2/9973533/filter.php?i="
+            final String API_RESOURCE_URL = URL_MULTI_INGREDIENTS
                     + temp.get(i).get(0) + ","
                     + temp.get(i).get(1) + ","
                     + temp.get(i).get(2);
@@ -66,10 +65,10 @@ public class ApiHandlerImpl implements ApiHandler {
         return recipes;
     }
 
-    @CacheEvict(value = {"ingredient", "name", "ingredients"}, allEntries = true)
+    @CacheEvict(value = {BY_INGREDIENT, BY_NAME, BY_INGREDIENTS}, allEntries = true)
     //(cron = "seconds minutes hour dayOfMonth month dayOfWeek"
-    @Scheduled(cron = "*/40 * * * * *")
+    @Scheduled(cron = CRON)
     public void cacheEvict() {
-        System.out.println("cache evict!" + LocalDateTime.now());
+        System.out.println(CACHE_EVICT + LocalDateTime.now());
     }
 }

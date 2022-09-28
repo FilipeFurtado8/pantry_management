@@ -14,6 +14,9 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import static academy.mindswap.pantry_management.utils.Messages.GET_RECIPE_BY_NAME;
+import static academy.mindswap.pantry_management.utils.Messages.RECIPES_BY_INGREDIENT;
+
 @Service
 @Slf4j
 public class ApiServiceImpl implements ApiService {
@@ -31,13 +34,13 @@ public class ApiServiceImpl implements ApiService {
 
     @Override
     public RecipeNameDto getRecipesByIngredient(String ingredientName) {
-        log.info("Getting recipes by ingredient");
+        log.info(RECIPES_BY_INGREDIENT);
         return apiHandler.getRecipesByIngredient(ingredientName);
     }
 
     @Override
     public RecipeDto getRecipesByName(String name) {
-        log.info("Getting recipes by name");
+        log.info(GET_RECIPE_BY_NAME);
         return apiHandler.getRecipesByName(name);
     }
 

@@ -3,32 +3,32 @@ package academy.mindswap.pantry_management.aop;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.context.annotation.Configuration;
 
+import static academy.mindswap.pantry_management.utils.Messages.*;
+
 @Configuration
 public class AppPointCuts {
-   @Pointcut("within(@org.springframework.web.bind.annotation.RestController *)")
+   @Pointcut(CONTROLLER_POINT_CUT)
     public void controllerPointCut() {
        //NO-OP
        }
 
-   @Pointcut("within(@org.springframework.stereotype.Service *)")
+   @Pointcut(SERVICE_POINT_CUT)
     public void servicePointCut() {
        // NO-OP
    }
 
-    @Pointcut("within(@org.springframework.stereotype.Repository *)")
+    @Pointcut(REPOSITORY_POINT_CUT)
     public void repositoryPointCut() {
        // NO-Op
     }
 
-    @Pointcut("execution(* academy.mindswap.pantry_management..*(..))")
+    @Pointcut(APP_POINT_CUT)
     public void appPointCut() {
        // NO-OP
     }
 
-    @Pointcut("appPointCut() && (controllerPointCut() || servicePointCut() || repositoryPointCut())")
+    @Pointcut(MAIN_POINT_CUT)
     public void mainPointCut() {
         // NO-OP
     }
-
-
 }

@@ -10,6 +10,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+import static academy.mindswap.pantry_management.utils.Messages.ALL_CATEGORIES;
+import static academy.mindswap.pantry_management.utils.Messages.UPDATING_CATEGORY;
+
 @Service
 @Slf4j
 public class CategoryServiceImp implements CategoryService {
@@ -22,7 +25,7 @@ public class CategoryServiceImp implements CategoryService {
 
     @Override
     public List<CategoryDTO> getAllCategories() {
-        log.info("Getting all categories");
+        log.info(ALL_CATEGORIES);
         return categoryRepository.findAll().stream()
                 .map(CategoryConverter::convertToDTO)
                 .toList();
@@ -58,7 +61,7 @@ public class CategoryServiceImp implements CategoryService {
     @Override
     public CategoryDTO alterCategory(CreateCategoryDTO createCategoryDTO, String name) {
 
-        log.info("Updating category");
+        log.info(UPDATING_CATEGORY);
         CategoryConverter.convertCreateCategoryDTOToCategory(createCategoryDTO);
 
         Category category = categoryRepository.findAll().stream()

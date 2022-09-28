@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.util.List;
 
+import static academy.mindswap.pantry_management.utils.Messages.USER1;
+
 @Data
 @Builder
 @NoArgsConstructor
@@ -20,6 +22,6 @@ public class User {
     private Integer id;
     private String username;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = USER1)
     private List<Ingredient> ingredientList;
 }

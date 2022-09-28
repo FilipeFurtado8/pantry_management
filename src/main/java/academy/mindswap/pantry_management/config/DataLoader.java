@@ -88,6 +88,7 @@ public class DataLoader {
                     .expirationDate(LocalDate.of(2022, 10, 13))
                     .category(category3)
                     .user(user1)
+                    .quantity(2)
                     .build();
 
 
@@ -96,6 +97,7 @@ public class DataLoader {
                     .expirationDate(LocalDate.of(2022, 10, 13))
                     .category(category6)
                     .user(user1)
+                    .quantity(45)
                     .build();
 
             Ingredient ingredient5 = Ingredient.builder()
@@ -103,6 +105,7 @@ public class DataLoader {
                     .expirationDate(LocalDate.of(2022, 10, 13))
                     .category(category2)
                     .user(user1)
+                    .quantity(5)
                     .build();
 
             Ingredient ingredient6 = Ingredient.builder()
@@ -110,6 +113,7 @@ public class DataLoader {
                     .expirationDate(LocalDate.of(2022, 10, 13))
                     .category(category7)
                     .user(user1)
+                    .quantity(48)
                     .build();
 
             ingredientRepository.saveAll(List.of(ingredient1, ingredient2, ingredient3, ingredient4, ingredient5, ingredient6));
