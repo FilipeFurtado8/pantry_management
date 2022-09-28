@@ -51,7 +51,7 @@ public class IngredientController {
         return ResponseEntity.ok(ingredientService.findByName(name));
     }
 
-    @GetMapping(DATE)
+    @GetMapping("/date/{year},{month},{day}")
     public ResponseEntity<List<IngredientDTO>> getIngredientsByExpirationDate(@PathVariable Integer year,
                                                                               @PathVariable Integer month,
                                                                               @PathVariable Integer day) {

@@ -2,6 +2,7 @@ package academy.mindswap.pantry_management.service;
 
 import academy.mindswap.pantry_management.command.categoryDTO.CategoryConverter;
 import academy.mindswap.pantry_management.command.categoryDTO.CategoryDTO;
+import academy.mindswap.pantry_management.command.categoryDTO.CategoryWithoutIngredientDTO;
 import academy.mindswap.pantry_management.command.categoryDTO.CreateCategoryDTO;
 import academy.mindswap.pantry_management.model.Category;
 import academy.mindswap.pantry_management.repository.CategoryRepository;
@@ -40,10 +41,10 @@ public class CategoryServiceImp implements CategoryService {
     }
 
     @Override
-    public CategoryDTO addCategory(CreateCategoryDTO createCategoryDTO) {
+    public CategoryWithoutIngredientDTO addCategory(CreateCategoryDTO createCategoryDTO) {
         Category category = CategoryConverter.convertCreateCategoryDTOToCategory(createCategoryDTO);
         Category category1 = categoryRepository.save(category);
-        return CategoryConverter.convertToDTO(category1);
+        return CategoryConverter.convertToDTOWithoutIngredient(category1);
     }
 
     @Override

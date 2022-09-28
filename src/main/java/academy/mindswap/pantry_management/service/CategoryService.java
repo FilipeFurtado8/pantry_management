@@ -2,6 +2,7 @@ package academy.mindswap.pantry_management.service;
 
 
 import academy.mindswap.pantry_management.command.categoryDTO.CategoryDTO;
+import academy.mindswap.pantry_management.command.categoryDTO.CategoryWithoutIngredientDTO;
 import academy.mindswap.pantry_management.command.categoryDTO.CreateCategoryDTO;
 
 import java.util.List;
@@ -12,7 +13,7 @@ public interface CategoryService {
 
     CategoryDTO getCategoryByType(String type);
 
-    CategoryDTO addCategory(CreateCategoryDTO createCategoryDTO);
+    CategoryWithoutIngredientDTO addCategory(CreateCategoryDTO createCategoryDTO);
 
     void deleteAll();
 
