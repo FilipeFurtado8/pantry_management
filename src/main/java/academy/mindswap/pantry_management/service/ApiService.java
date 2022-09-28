@@ -1,9 +1,14 @@
 package academy.mindswap.pantry_management.service;
 
+import academy.mindswap.pantry_management.command.api_dto.RecipeDto;
+import academy.mindswap.pantry_management.command.api_dto.RecipeNameDto;
+
+import java.util.Set;
+
 public interface ApiService {
-    Object getRecipesByIngredient(String ingredientName);
+    RecipeNameDto getRecipesByIngredient(String ingredientName);
 
-    Object getRecipesByName(String name);
+    RecipeDto getRecipesByName(String name);
 
-    Object getRecipesByStock();
+    Set<RecipeNameDto> getRecipesByStock();
 }

@@ -1,6 +1,8 @@
 package academy.mindswap.pantry_management.service;
 
 import academy.mindswap.pantry_management.api.ApiHandler;
+import academy.mindswap.pantry_management.command.api_dto.RecipeDto;
+import academy.mindswap.pantry_management.command.api_dto.RecipeNameDto;
 import academy.mindswap.pantry_management.command.ingredientDTO.IngredientDTO;
 import academy.mindswap.pantry_management.model.Ingredient;
 import lombok.extern.slf4j.Slf4j;
@@ -9,6 +11,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
@@ -27,19 +30,19 @@ public class ApiServiceImpl implements ApiService {
     }
 
     @Override
-    public Object getRecipesByIngredient(String ingredientName) {
+    public RecipeNameDto getRecipesByIngredient(String ingredientName) {
         log.info("Getting recipes by ingredient");
         return apiHandler.getRecipesByIngredient(ingredientName);
     }
 
     @Override
-    public Object getRecipesByName(String name) {
+    public RecipeDto getRecipesByName(String name) {
         log.info("Getting recipes by name");
         return apiHandler.getRecipesByName(name);
     }
 
     @Override
-    public Object getRecipesByStock() {
+    public Set<RecipeNameDto> getRecipesByStock() {
         String[] ingredientListName = ingredientService.getAllIngredients()
                 .stream()
                 .map((IngredientDTO t) -> t.getName())

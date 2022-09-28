@@ -32,7 +32,7 @@ public class IngredientController {
         return ResponseEntity.ok(ingredientService.getAllIngredients());
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/id/{id}")
     public ResponseEntity<IngredientDTO> getIngredientById(@PathVariable Integer id) {
         if (id == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
