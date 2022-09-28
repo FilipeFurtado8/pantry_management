@@ -13,7 +13,7 @@ import static academy.mindswap.pantry_management.utils.Messages.USER1;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@ToString(exclude = USER1)
+@ToString(exclude = "user")
 public class Ingredient {
 
     @Id

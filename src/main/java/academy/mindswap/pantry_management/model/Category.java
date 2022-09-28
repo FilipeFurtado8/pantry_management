@@ -14,7 +14,7 @@ import static academy.mindswap.pantry_management.utils.Messages.INGREDIENT_LIST;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@ToString(exclude = INGREDIENT_LIST)
+@ToString(exclude = "ingredientList")
 public class Category {
 
     @Id
