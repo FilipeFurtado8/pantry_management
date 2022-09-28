@@ -3,6 +3,7 @@ package academy.mindswap.pantry_management.service;
 import academy.mindswap.pantry_management.api.ApiHandler;
 import academy.mindswap.pantry_management.model.Ingredient;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -24,20 +25,20 @@ public class ApiServiceImpl implements ApiService {
         this.apiHandler = apiHandler;
         this.ingredientService = ingredientService;
     }
-
+    @Cacheable("ingredients")
     @Override
     public Object getRecipesByIngredient(String ingredientName) {
         log.info("Getting recipes by ingredient");
         return apiHandler.getRecipesByIngredient(ingredientName);
     }
-
+    @Cacheable("ingredients")
     @Override
     public Object getRecipesByName(String name) {
         log.info("Getting recipes by name");
         return apiHandler.getRecipesByName(name);
     }
 
-
+    @Cacheable("ingredients")
     @Override
     public Object get() {
         String[] ingredientListName = ingredientService.getAllIngredients()
