@@ -66,7 +66,7 @@ public class IngredientServiceImp implements IngredientService {
 
     @Override
     public IngredientDTO alterIngredient(CreateIngredientDTO ingredient, String name) {
-        log.info("Updating ingredient");
+
         IngredientConverter.convertCreateIngredientDTOToIngredient(ingredient);
 
         Ingredient ingredient1 = ingredientRepository.findAll().stream()

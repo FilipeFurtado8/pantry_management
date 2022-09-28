@@ -26,6 +26,7 @@ public class IngredientController {
         this.ingredientService = ingredientService;
     }
 
+
     @GetMapping
     public ResponseEntity<List<IngredientDTO>> getAllIngredients() {
         log.info("Getting all ingredients");
@@ -85,9 +86,11 @@ public class IngredientController {
     @PutMapping("/{name}")
     private ResponseEntity<IngredientDTO> alterIngredient(@RequestBody CreateIngredientDTO ingredient, @PathVariable String name) {
 
-        if (name == null) {
+        /*if (name == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
+
+         */
 
         log.info("Updating ingredient");
 

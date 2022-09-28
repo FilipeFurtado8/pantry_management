@@ -2,6 +2,7 @@ package academy.mindswap.pantry_management.command.ingredientDTO;
 
 
 import academy.mindswap.pantry_management.command.categoryDTO.CategoryConverter;
+import academy.mindswap.pantry_management.command.userDTO.UserConverter;
 import academy.mindswap.pantry_management.model.Ingredient;
 
 public class IngredientConverter {
@@ -13,6 +14,7 @@ public class IngredientConverter {
                 .expirationDate(ingredient.getExpirationDate())
                 .categoryDTO(CategoryConverter.convertToDTOWithoutIngredient(ingredient.getCategory()))
                 .quantity(ingredient.getQuantity())
+                .userDTO(UserConverter.convertToDTO(ingredient.getUser()))
                 .build();
     }
 
