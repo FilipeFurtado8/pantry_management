@@ -47,7 +47,7 @@ public class CategoryController {
     }
 
     @PostMapping("/")
-    public ResponseEntity<?> addCategory(@Valid @RequestBody CreateCategoryDTO CreateCategoryDTO, BindingResult bindingResult) {
+    public ResponseEntity<?> addCategory(@RequestBody CreateCategoryDTO createCategoryDTO, BindingResult bindingResult) {
 
         if (bindingResult.hasErrors()) {
             Map<String, String> errors = new HashMap<>();
@@ -60,7 +60,9 @@ public class CategoryController {
             return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
         }
 
-        return ResponseEntity.ok(categoryService.addCategory(CreateCategoryDTO));
+
+
+        return ResponseEntity.ok(categoryService.addCategory(createCategoryDTO));
     }
 
     @PutMapping("/{name}")

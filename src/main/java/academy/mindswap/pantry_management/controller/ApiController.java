@@ -1,5 +1,7 @@
 package academy.mindswap.pantry_management.controller;
 
+import academy.mindswap.pantry_management.command.api_dto.RecipeDto;
+import academy.mindswap.pantry_management.command.api_dto.RecipeNameDto;
 import academy.mindswap.pantry_management.service.ApiService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -8,6 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Set;
 
 @RestController
 @RequestMapping("/recipe")
@@ -21,7 +25,7 @@ public class ApiController {
     }
 
     @GetMapping("/byIngredient/{ingredientName}")
-    public ResponseEntity<Object> getRecipesByIngredient(@PathVariable String ingredientName) {
+    public ResponseEntity<RecipeNameDto> getRecipesByIngredient(@PathVariable String ingredientName) {
 
         if (ingredientName == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -31,7 +35,7 @@ public class ApiController {
     }
 
     @GetMapping("/{name}")
-    public ResponseEntity<Object> getRecipesByName(@PathVariable String name) {
+    public ResponseEntity<RecipeDto> getRecipesByName(@PathVariable String name) {
         if (name == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
@@ -42,7 +46,7 @@ public class ApiController {
     }
 
     @GetMapping("/stock")
-    public ResponseEntity<Object> getRecipesByStock() {
+    public ResponseEntity<Set<RecipeNameDto>> getRecipesByStock() {
 
         log.info("Getting recipes by stock");
         

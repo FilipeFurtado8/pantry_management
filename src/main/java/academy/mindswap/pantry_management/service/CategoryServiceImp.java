@@ -39,8 +39,8 @@ public class CategoryServiceImp implements CategoryService {
     @Override
     public CategoryDTO addCategory(CreateCategoryDTO createCategoryDTO) {
         Category category = CategoryConverter.convertCreateCategoryDTOToCategory(createCategoryDTO);
-        categoryRepository.save(category);
-        return CategoryConverter.convertToDTO(category);
+        Category category1 = categoryRepository.save(category);
+        return CategoryConverter.convertToDTO(category1);
     }
 
     @Override

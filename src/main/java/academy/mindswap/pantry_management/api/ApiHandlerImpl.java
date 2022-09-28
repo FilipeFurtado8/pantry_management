@@ -1,5 +1,8 @@
 package academy.mindswap.pantry_management.api;
 
+import academy.mindswap.pantry_management.command.api_dto.MealNameDto;
+import academy.mindswap.pantry_management.command.api_dto.RecipeDto;
+import academy.mindswap.pantry_management.command.api_dto.RecipeNameDto;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.http.ResponseEntity;
@@ -7,28 +10,31 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Component
 public class ApiHandlerImpl implements ApiHandler {
 
-    private final int API_KEY = 9973533;
-    private final List<Object> recipes = new ArrayList<>();
+    private final Set<RecipeNameDto> recipes = new HashSet<>();
 
     @Override
-    public Object getRecipesByIngredient(String ingredientName) {
+    public RecipeNameDto getRecipesByIngredient(String ingredientName) {
         final String API_RESOURCE_URL = "https://www.themealdb.com/api/json/v1/1/filter.php?i=" + ingredientName;
-        return new RestTemplate().getForObject(API_RESOURCE_URL, Object.class);
+        return new RestTemplate().getForObject(API_RESOURCE_URL, RecipeNameDto.class);
     }
 
     @Override
-    public Object getRecipesByName(String name) {
+    public RecipeDto getRecipesByName(String name) {
         final String API_RESOURCE_URL = "https://www.themealdb.com/api/json/v1/1/search.php?s=" + name;
-        return new RestTemplate().getForObject(API_RESOURCE_URL, Object.class);
+        return new RestTemplate().getForObject(API_RESOURCE_URL, RecipeDto.class);
     }
 
     @Override
-    public Object getRecipesByIngredients(List<List<String>> ingredients) {
+    public Set<RecipeNameDto> getRecipesByIngredients(List<List<String>> ingredients) {
+
+        MealNameDto meal = new MealNameDto();
 
         List<List<String>> temp = new ArrayList<>();
 
@@ -41,11 +47,9 @@ public class ApiHandlerImpl implements ApiHandler {
                     + temp.get(i).get(1) + ","
                     + temp.get(i).get(2);
 
-            Object jsonFromMealApi = new RestTemplate().getForObject(API_RESOURCE_URL, Object.class);
+            RecipeNameDto jsonFromMealApi = new RestTemplate().getForObject(API_RESOURCE_URL, RecipeNameDto.class);
 
-            String stringJsonFromMealApi = jsonFromMealApi.toString();
-
-            if (!stringJsonFromMealApi.contains("null")) {
+            if(jsonFromMealApi.getMeals() != null){
                 recipes.add(jsonFromMealApi);
             }
         }
