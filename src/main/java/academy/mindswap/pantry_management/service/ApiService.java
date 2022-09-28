@@ -5,5 +5,5 @@ public interface ApiService {
 
     Object getRecipesByName(String name);
 
-    Object get();
+    Object getRecipesByStock();
 }

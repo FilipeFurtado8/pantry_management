@@ -1,6 +1,6 @@
 package academy.mindswap.pantry_management.command.ingredientDTO;
 
-import academy.mindswap.pantry_management.command.categoryDTO.CategoryDTO;
+import academy.mindswap.pantry_management.command.categoryDTO.CategoryWithoutIngredientDTO;
 import academy.mindswap.pantry_management.command.userDTO.UserDTO;
 import lombok.Builder;
 import lombok.Data;
@@ -15,6 +15,6 @@ public class IngredientDTO {
     private String name;
     private Integer quantity;
     private LocalDate expirationDate;
-    private CategoryDTO categoryDTO;
+    private CategoryWithoutIngredientDTO categoryDTO;
     private UserDTO userDTO;
 }

@@ -6,7 +6,7 @@ import lombok.Data;
 @Data
 @Builder
 public class CreateCategoryDTO {
-    private Integer id;
+ 
     private String type;
-    
+
 }
