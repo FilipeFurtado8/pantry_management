@@ -9,4 +9,6 @@ public interface IngredientService {
 
 
     Ingredient alterIngredient(Ingredient ingredient, String name);
+
+    Ingredient findByName(String name);
 }

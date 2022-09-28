@@ -24,7 +24,7 @@ public class IngredientServiceImp implements IngredientService {
     }
 
     public Ingredient findByName(String name) {
-        log.info("Finding ingredient by name"+name);
+        log.info("Finding ingredient by name" + name);
         return ingredientRepository.findAll().stream()
                 .filter(ingredient -> ingredient.getName().equals(name))
                 .findFirst().orElseThrow();
@@ -38,6 +38,8 @@ public class IngredientServiceImp implements IngredientService {
         ingredient1.setQuantity(ingredient.getQuantity());
 
         return ingredientRepository.save(ingredient1);
-        
+
     }
+
+    
 }
