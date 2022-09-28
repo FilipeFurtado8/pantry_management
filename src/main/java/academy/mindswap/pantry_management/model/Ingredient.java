@@ -6,12 +6,14 @@ import lombok.*;
 import javax.persistence.*;
 import java.time.LocalDate;
 
+import static academy.mindswap.pantry_management.utils.Messages.USER1;
+
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@ToString(exclude = "user")
+@ToString(exclude = USER1)
 public class Ingredient {
 
     @Id

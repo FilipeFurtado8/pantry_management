@@ -13,8 +13,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Set;
 
+import static academy.mindswap.pantry_management.utils.Messages.*;
+
 @RestController
-@RequestMapping("/recipe")
+@RequestMapping(RECIPE)
 @Slf4j
 public class ApiController {
 
@@ -24,32 +26,26 @@ public class ApiController {
         this.apiService = apiService;
     }
 
-    @GetMapping("/byIngredient/{ingredientName}")
+    @GetMapping(RECIPE_BY_INGREDIENT)
     public ResponseEntity<RecipeNameDto> getRecipesByIngredient(@PathVariable String ingredientName) {
-
         if (ingredientName == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-
         return ResponseEntity.ok(apiService.getRecipesByIngredient(ingredientName));
     }
 
-    @GetMapping("/{name}")
+    @GetMapping(NAME)
     public ResponseEntity<RecipeDto> getRecipesByName(@PathVariable String name) {
         if (name == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-
-        log.info("Getting recipes by name");
-
+        log.info(GET_RECIPE_BY_NAME);
         return ResponseEntity.ok(apiService.getRecipesByName(name));
     }
 
-    @GetMapping("/stock")
+    @GetMapping(RECIPE_BY_STOCK)
     public ResponseEntity<Set<RecipeNameDto>> getRecipesByStock() {
-
-        log.info("Getting recipes by stock");
-        
+        log.info(GET_RECIPE_BY_STOCK);
         return ResponseEntity.ok(apiService.getRecipesByStock());
     }
 }

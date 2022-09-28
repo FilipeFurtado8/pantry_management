@@ -15,8 +15,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static academy.mindswap.pantry_management.utils.Messages.*;
+
 @RestController
-@RequestMapping(path = "/ingredient")
+@RequestMapping(path = INGREDIENT)
 @Slf4j
 public class IngredientController {
 
@@ -26,13 +28,14 @@ public class IngredientController {
         this.ingredientService = ingredientService;
     }
 
+
     @GetMapping
     public ResponseEntity<List<IngredientDTO>> getAllIngredients() {
-        log.info("Getting all ingredients");
+        log.info(GET_ALL_INGREDIENTS);
         return ResponseEntity.ok(ingredientService.getAllIngredients());
     }
 
-    @GetMapping("/id/{id}")
+    @GetMapping(ID)
     public ResponseEntity<IngredientDTO> getIngredientById(@PathVariable Integer id) {
         if (id == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -40,7 +43,7 @@ public class IngredientController {
         return ResponseEntity.ok(ingredientService.getIngredientById(id));
     }
 
-    @GetMapping("/{name}")
+    @GetMapping(NAME)
     public ResponseEntity<IngredientDTO> getIngredientByName(@PathVariable String name) {
         if (name == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -48,7 +51,7 @@ public class IngredientController {
         return ResponseEntity.ok(ingredientService.findByName(name));
     }
 
-    @GetMapping("/date/{year},{month},{day}")
+    @GetMapping(DATE)
     public ResponseEntity<List<IngredientDTO>> getIngredientsByExpirationDate(@PathVariable Integer year,
                                                                               @PathVariable Integer month,
                                                                               @PathVariable Integer day) {
@@ -58,7 +61,7 @@ public class IngredientController {
         return ResponseEntity.ok(ingredientService.findByExpirationDate(year, month, day));
     }
 
-    @GetMapping("/quantity/{quantity}")
+    @GetMapping(QUANTITY)
     public ResponseEntity<List<IngredientDTO>> getIngredientsByQuantity(@PathVariable Integer quantity) {
         if (quantity == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -66,9 +69,8 @@ public class IngredientController {
         return ResponseEntity.ok(ingredientService.getIngredientsByQuantity(quantity));
     }
 
-    @PostMapping("/")
+    @PostMapping(BAR)
     public ResponseEntity<?> addIngredient(@Valid @RequestBody CreateIngredientDTO ingredient, BindingResult bindingResult) {
-
         if (bindingResult.hasErrors()) {
             Map<String, String> errors = new HashMap<>();
             bindingResult.getAllErrors().forEach((error) -> {
@@ -78,31 +80,29 @@ public class IngredientController {
             });
             return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
         }
-
         return ResponseEntity.ok(ingredientService.addIngredient(ingredient));
     }
 
-    @PutMapping("/{name}")
-    private ResponseEntity<IngredientDTO> alterIngredient(@RequestBody CreateIngredientDTO ingredient, @PathVariable String name) {
+    @PutMapping(NAME)
+    private ResponseEntity<IngredientDTO> alterIngredient(@Valid @RequestBody CreateIngredientDTO ingredient, @PathVariable String name) {
 
         if (name == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-
-        log.info("Updating ingredient");
+        log.info(UPDATING_INGREDIENT);
 
         return ResponseEntity.ok(ingredientService.alterIngredient(ingredient, name));
     }
 
-    @DeleteMapping("/")
+    @DeleteMapping(BAR)
     public ResponseEntity<String> deleteAllIngredients() {
         ingredientService.deleteAllIngredients();
-        return ResponseEntity.ok("All ingredients were deleted");
+        return ResponseEntity.ok(INGREDIENTS_DELETED);
     }
 
-    @DeleteMapping("/{name}")
+    @DeleteMapping(NAME)
     public ResponseEntity<String> deleteIngredientByName(@PathVariable String name) {
         ingredientService.deleteIngredientByName(name);
-        return ResponseEntity.ok("The ingredient, " + name + ", was deleted!");
+        return ResponseEntity.ok(THE_INGREDIENT + name + WAS_DELETED);
     }
 }

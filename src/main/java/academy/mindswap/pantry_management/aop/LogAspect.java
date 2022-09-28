@@ -12,13 +12,16 @@ import org.springframework.core.annotation.Order;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Stream;
 
+import static academy.mindswap.pantry_management.utils.Messages.LOG_ASPECT;
+import static academy.mindswap.pantry_management.utils.Messages.PATH;
+
 @Order(0)
 @Aspect
 @Configuration
 @Slf4j
 public class LogAspect {
 
-    @Around("academy.mindswap.pantry_management.aop.AppPointCuts.mainPointCut()")
+    @Around(PATH)
     public Object calculateMethodTimeAdvice(ProceedingJoinPoint joinPoint) throws Throwable {
 
         final Logger classLogger = LoggerFactory.getLogger(joinPoint.getTarget().getClass());
@@ -45,7 +48,7 @@ public class LogAspect {
                 .result(result)
                 .build();
 
-        classLogger.info("LogAspect : {}", message);
+        classLogger.info(LOG_ASPECT, message);
 
 
         return result;

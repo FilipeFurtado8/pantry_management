@@ -9,8 +9,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+import static academy.mindswap.pantry_management.utils.Messages.GET_ALL_USERS;
+import static academy.mindswap.pantry_management.utils.Messages.USER;
+
 @RestController
-@RequestMapping("/user")
+@RequestMapping(USER)
 @Slf4j
 public class UserController {
 
@@ -22,9 +25,7 @@ public class UserController {
 
     @GetMapping
     private List<UserDTO> getUser() {
-        log.info("Getting all users");
+        log.info(GET_ALL_USERS);
         return userService.getUser();
     }
-
-
 }

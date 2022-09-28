@@ -12,6 +12,8 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.util.List;
 
+import static academy.mindswap.pantry_management.utils.Messages.*;
+
 @Service
 @Slf4j
 public class IngredientServiceImp implements IngredientService {
@@ -24,7 +26,7 @@ public class IngredientServiceImp implements IngredientService {
 
     @Override
     public List<IngredientDTO> getAllIngredients() {
-        log.info("Getting all ingredients");
+        log.info(GET_ALL_INGREDIENTS);
         return ingredientRepository.findAll().stream()
                 .map(IngredientConverter::convertToDTO)
                 .toList();
@@ -32,7 +34,7 @@ public class IngredientServiceImp implements IngredientService {
 
     @Override
     public IngredientDTO findByName(String name) {
-        log.info("Finding ingredient by name" + name);
+        log.info(FIND_INGREDIENT_BY_NAME + name);
         return ingredientRepository.findAll().stream()
                 .filter(ingredient -> ingredient.getName().equals(name))
                 .map(IngredientConverter::convertToDTO)
@@ -60,13 +62,13 @@ public class IngredientServiceImp implements IngredientService {
     @Override
     public IngredientDTO getIngredientById(Integer id) {
         Ingredient ingredient = ingredientRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("The ingredient with this id doesn't exist. Id: " + id));
+                .orElseThrow(() -> new ResourceNotFoundException(INGREDIENT_WITH_ID_DOESNT_EXIST + id));
         return IngredientConverter.convertToDTO(ingredient);
     }
 
     @Override
     public IngredientDTO alterIngredient(CreateIngredientDTO ingredient, String name) {
-        log.info("Updating ingredient");
+
         IngredientConverter.convertCreateIngredientDTOToIngredient(ingredient);
 
         Ingredient ingredient1 = ingredientRepository.findAll().stream()

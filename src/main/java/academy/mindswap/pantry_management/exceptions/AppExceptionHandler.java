@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+import static academy.mindswap.pantry_management.utils.Messages.RESOURCE_NOT_FOUND;
+
 @ControllerAdvice
 public class AppExceptionHandler {
 
@@ -18,7 +20,7 @@ public class AppExceptionHandler {
 
     @ExceptionHandler(value = {ResourceNotFoundException.class})
     public ResponseEntity<String> handleNotFoundException(Exception ex, HttpServletRequest request, HttpServletResponse response) throws IOException {
-        LOGGER.error("Resource not found: {}", ex);
+        LOGGER.error(RESOURCE_NOT_FOUND, ex);
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
     }
 }
