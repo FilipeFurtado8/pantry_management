@@ -1,7 +1,15 @@
 # Pantry Management
 <h1 align="left"></h1>
 <div align="center">
-<img src="https://i.imgur.com/5jrrqqC.png" align="center" height="250" width="250">
+<img src="https://i.imgur.com/5jrrqqC.png" align="center" height="250" width="250" class="logo">
+<style>
+img {
+  border-radius: 10%;
+}
+.logo {
+  border-radius: 18%;
+}
+</style>
   </div>
     <strong>
        <p align="center"> A simple pantry management app </p> 
@@ -45,9 +53,22 @@ and we are always looking for new ways to improve our skills.</p>
 This project was made within the scope of Mindera code academy, to develop and use the tools that we acquired during 
 our formation as developers</p>
 
-###
+## Dependencies in this project
+```
+lombok
+spring-boot-starter-data-jpa
+spring-boot-starter-web
+spring-boot-starter-test
+spring-boot-starter-validation
+spring-boot-starter-aop
+spring-boot-maven-plugin
+mysql-connector-java
+jaxb-api
 
-### Requirements
+```
+
+
+## Requirements
 &nbsp;&nbsp;
 Before starting, you will need to have the following tools installed on your machine:
 
@@ -129,10 +150,11 @@ link: https://www.themealdb.com/api.php
 <div align="center">
   <img height="200" src="https://c.tenor.com/_DOBjnGspYAAAAAC/code-coding.gif"  />
 </div>
-<h3 align="center">A passionate developers from Portugal</h3>
+<h3 align="center"> Passionate developers from Portugal </h3>
 <h3 align="left">Connect with me:</h3>
 <p align="left">
-<a href="https://linkedin.com/in/augusto-furtado-540108b7" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/linked-in-alt.svg" alt="ruimtvieira" height="30" width="40" /></a>
+<a href="https://linkedin.com/in/augusto-furtado-540108b7" target="blank"><img align="center" 
+src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/linked-in-alt.svg" alt="ruimtvieira" height="30" width="40" /></a>
 </p>
 
 
