@@ -22,4 +22,26 @@ public class CategoryServiceImp implements CategoryService {
          log.info("Getting all categories");
         return categoryRepository.findAll();
     }
+
+    @Override
+    public Category getCategoryByType(String type) {
+        return categoryRepository.findAll().stream()
+                .filter(category -> category.getType().equals(type))
+                .findFirst().orElseThrow();
+    }
+
+    @Override
+    public Category addCategory(Category category) {
+        return categoryRepository.save(category);
+    }
+
+    @Override
+    public void deleteAll() {
+        categoryRepository.deleteAll();
+    }
+
+    @Override
+    public void deleteCategorybyType(String name) {
+        categoryRepository.delete(getCategoryByType(name));
+    }
 }

@@ -7,7 +7,13 @@ import java.util.List;
 
 public interface CategoryService {
 
-
     List<Category> getAllCategories();
 
+    Category getCategoryByType(String type);
+
+    Category addCategory(Category category);
+
+    void deleteAll();
+
+    void deleteCategorybyType(String name);
 }

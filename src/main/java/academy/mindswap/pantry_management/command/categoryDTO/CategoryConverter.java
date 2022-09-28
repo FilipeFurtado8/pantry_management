@@ -12,7 +12,7 @@ public class CategoryConverter {
                 .id(category.getId())
                 .type(category.getType())
                 .ingredientListDTO(category.getIngredientList().stream()
-                        .map(IngredientConverter::convertToDTO)
+                        .map(ingredient -> IngredientConverter.convertToDTO(ingredient))
                         .collect(Collectors.toList()))
                 .build();
     }

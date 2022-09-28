@@ -72,6 +72,7 @@ public class DataLoader {
                     .expirationDate(LocalDate.of(2022, 10, 13))
                     .category(category1)
                     .user(user1)
+                    .quantity(10)
                     .build();
 
             Ingredient ingredient2 = Ingredient.builder()
@@ -79,6 +80,7 @@ public class DataLoader {
                     .expirationDate(LocalDate.of(2022, 10, 13))
                     .category(category1)
                     .user(user1)
+                    .quantity(0)
                     .build();
 
             Ingredient ingredient3 = Ingredient.builder()

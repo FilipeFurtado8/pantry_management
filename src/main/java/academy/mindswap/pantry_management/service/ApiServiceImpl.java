@@ -1,6 +1,7 @@
 package academy.mindswap.pantry_management.service;
 
 import academy.mindswap.pantry_management.api.ApiHandler;
+import academy.mindswap.pantry_management.command.ingredientDTO.IngredientDTO;
 import academy.mindswap.pantry_management.model.Ingredient;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -37,17 +38,15 @@ public class ApiServiceImpl implements ApiService {
         return apiHandler.getRecipesByName(name);
     }
 
-
     @Override
-    public Object get() {
+    public Object getRecipesByStock() {
         String[] ingredientListName = ingredientService.getAllIngredients()
                 .stream()
-                .map(Ingredient::getName)
+                .map((IngredientDTO t) -> t.getName())
                 .toArray(String[]::new);
 
         int rangeOfIngredients = 3;
         int stockSize = ingredientListName.length;
-
         String[] data = new String[rangeOfIngredients];
 
         return apiHandler.getRecipesByIngredients(
@@ -59,21 +58,17 @@ public class ApiServiceImpl implements ApiService {
                                                int rangeOfIngredients) {
 
         if (index == rangeOfIngredients) {
-
             return arrList.stream().map(Arrays::asList).collect(Collectors.toList());
         }
 
         for (int i = start; i <= end && end - i + 1 >= rangeOfIngredients - index; i++) {
             data[index] = ingredientListName[i];
-
             combinationUtil(ingredientListName, data, i + 1, end, index + 1, rangeOfIngredients);
-
             String[] newArr = new String[data.length];
 
             for (int j = 0; j < data.length; j++) {
                 newArr[j] = data[j];
             }
-
             arrList.add(newArr);
         }
         return arrList.stream().map(Arrays::asList).collect(Collectors.toList());

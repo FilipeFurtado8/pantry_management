@@ -1,5 +1,7 @@
 package academy.mindswap.pantry_management.controller;
 
+import academy.mindswap.pantry_management.command.ingredientDTO.CreateIngredientDTO;
+import academy.mindswap.pantry_management.command.ingredientDTO.IngredientDTO;
 import academy.mindswap.pantry_management.model.Ingredient;
 import academy.mindswap.pantry_management.model.User;
 import academy.mindswap.pantry_management.service.UserService;
@@ -19,7 +21,6 @@ public class UserController {
         this.userService = userService;
     }
 
-
     @GetMapping
     private List<User> getUser() {
         log.info("Getting all users");
@@ -28,9 +29,11 @@ public class UserController {
 
 
     @PutMapping(path = "/update/{name}")
-    private Ingredient alterIngredient(@RequestBody Ingredient ingredient, @PathVariable String name) {
+    private IngredientDTO alterIngredient(@RequestBody CreateIngredientDTO ingredient, @PathVariable String name) {
         log.info("Updating ingredient");
         return userService.alterIngredient(ingredient, name);
 
     }
+
+
 }

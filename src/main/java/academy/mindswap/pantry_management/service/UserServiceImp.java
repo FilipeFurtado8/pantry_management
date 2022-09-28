@@ -1,6 +1,7 @@
 package academy.mindswap.pantry_management.service;
 
-import academy.mindswap.pantry_management.model.Ingredient;
+import academy.mindswap.pantry_management.command.ingredientDTO.CreateIngredientDTO;
+import academy.mindswap.pantry_management.command.ingredientDTO.IngredientDTO;
 import academy.mindswap.pantry_management.model.User;
 import academy.mindswap.pantry_management.repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -29,7 +30,7 @@ public class UserServiceImp implements UserService {
     }
 
     @Override
-    public Ingredient alterIngredient(Ingredient ingredient, String name) {
+    public IngredientDTO alterIngredient(CreateIngredientDTO ingredient, String name) {
         log.info("Updating ingredient");
         return ingredientService.alterIngredient(ingredient, name);
     }

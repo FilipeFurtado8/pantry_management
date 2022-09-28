@@ -30,8 +30,8 @@ public class ApiController {
     }
 
     @GetMapping("/stock")
-    public Object get(){
+    public Object getRecipesByStock(){
         log.info("Getting recipes by stock");
-        return apiService.get();
+        return apiService.getRecipesByStock();
     }
 }
