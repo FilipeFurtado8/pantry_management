@@ -118,7 +118,7 @@ public class DataLoader {
 
             ingredientRepository.saveAll(List.of(ingredient1, ingredient2, ingredient3, ingredient4, ingredient5, ingredient6));
 
-            /*Ingredient ingredient7 = Ingredient.builder()
+           /* Ingredient ingredient7 = Ingredient.builder()
                     .name("rice")
                     .expirationDate(LocalDate.of(2022, 10, 13))
                     .category(category9)
@@ -159,6 +159,9 @@ public class DataLoader {
                     .category(category9)
                     .user(user1)
                     .build();
+
+            ingredientRepository.saveAll(List.of(ingredient1, ingredient2, ingredient3, ingredient4, ingredient5, ingredient6,
+                    ingredient7, ingredient8, ingredient9, ingredient10, ingredient11, ingredient12));
 
             Ingredient ingredient13 = Ingredient.builder()
                     .name("banana")
@@ -207,7 +210,9 @@ public class DataLoader {
                     ingredient9, ingredient10, ingredient11, ingredient12,
                     ingredient13, ingredient14, ingredient15, ingredient16, ingredient17, ingredient18));
 
-             */
+            */
+
+
         };
 
     }

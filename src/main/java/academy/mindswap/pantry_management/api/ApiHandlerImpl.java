@@ -42,7 +42,6 @@ public class ApiHandlerImpl implements ApiHandler {
 
         final Set<RecipeNameDto> recipes = new HashSet<>();
 
-
         List<List<String>> temp = new ArrayList<>();
 
         for (int i = 0; i < ingredients.size(); i++) {
