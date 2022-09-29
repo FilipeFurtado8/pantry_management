@@ -27,7 +27,7 @@ The main goal is make your life easier by giving you the ability to manage your 
 expiration date and get recipes to cook and have more time in your life to have fun.
 
 <p> More features will be added in the future. </p>
-<strong>👨🏼‍🍳  We hope you will enjoyed.</strong>
+<strong>👨🏼‍🍳  We hope you will enjoy.</strong>
 
 <strong>✨ Creating bugs since</strong> 25/set/2022✨
 
@@ -45,7 +45,7 @@ and we are always looking for new ways to improve our skills and have fun with i
 <p align="left">
 &nbsp;&nbsp;
 This project was made within the scope of Mindera code academy, to develop and use the tools that we acquired during 
-our formation as developers</p>
+our formation as developers </p>
 
 ### Implementation:
 ```
