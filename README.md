@@ -40,14 +40,36 @@ expiration date and get recipes to cook and have more time in your life to have 
 <p align="left">
 &nbsp;&nbsp;
 We are a group of developers who are passionate about technology and innovation, we are always looking for new challenges
-and we are always looking for new ways to improve our skills.</p>
+and we are always looking for new ways to improve our skills and have fun with it.</p>
 
 <p align="left">
 &nbsp;&nbsp;
 This project was made within the scope of Mindera code academy, to develop and use the tools that we acquired during 
 our formation as developers</p>
 
-###
+### Implementation:
+```
+Model Relationships;
+Local Cache;
+Docker Compose;
+External API;
+Swagger;
+Insominia Collection;
+```
+
+### Packages:
+```
+AOP: LogAspect and pointCuts;
+API: class deals with the external API;
+Commands: contains data transfer objects(DTO);
+Config: Cache and DataLoader configuration;
+Controller:  class handles the path;
+Exceptions: classes to handle exceptions;
+Model: contains entities;
+Repository: contains repositories;
+Service: contains services;
+Util: class with the messages;
+```
 ## Dependencies in this project
 
 ```
@@ -57,13 +79,24 @@ spring-boot-starter-web
 spring-boot-starter-test
 spring-boot-starter-validation
 spring-boot-starter-aop
+spring-boot-starter-cache
+spring-boot-starter-data-redis
+spring-boot-starter-test
 spring-boot-maven-plugin
 mysql-connector-java
 jaxb-api
 
 ```
 ###
-## Requirements
+## Swagger
+```
+Swagger is a tool that helps us to document our API, it is very useful to test our API and to have a better understanding;
+http://localhost:8080/swagger-ui.html
+```
+<img src="https://i.imgur.com/YDS1lNQ.png" align="center" height="250" width="250" class="logo">
+
+### Requirements
+
 
 &nbsp;&nbsp;
 Before starting, you will need to have the following tools installed on your machine:
@@ -77,17 +110,18 @@ Besides, it's good to have an editor to work with the code like [Intellij](https
 # Clone repository
 $ git clone <https://github.com/filipefurtado8/pantry_management>
 
-# Access the project folder in the terminal/cmd
-$ cd nlw1
+# Open the project in your IDE 
 
+# Open Pom.xml and with maven the dependencies
+ Can be done by clicking on the maven icon on the right side of the IDE and clicking on the reload button
 
-# install the dependencies
-$ npm install
-
-# Execute the application in development mode
-$ npm run dev:server
+# Run the docker-compose
+  with the docker-compose.yml file open, right click and click on the option "run docker-compose" and 
+  wait for the containers to be created 
 
 # The server will start at port: 3306 - go to <http://localhost:3306>
+
+
 ```
 
 ###
