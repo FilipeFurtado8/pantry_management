@@ -59,7 +59,7 @@ public class CategoryController {
     }
 
     @PutMapping(NAME)
-    private ResponseEntity<CategoryDTO> alterIngredient(@Valid @RequestBody CreateCategoryDTO createCategoryDTO, @PathVariable String name) {
+    public ResponseEntity<CategoryDTO> alterIngredient(@Valid @RequestBody CreateCategoryDTO createCategoryDTO, @PathVariable String name) {
         if (name == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }

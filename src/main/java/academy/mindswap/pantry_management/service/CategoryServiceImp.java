@@ -69,6 +69,7 @@ public class CategoryServiceImp implements CategoryService {
                 .filter(category1 -> category1.getType().equals(name))
                 .findFirst().orElseThrow();
 
+        category.setType(createCategoryDTO.getType());
 
         categoryRepository.save(category);
 

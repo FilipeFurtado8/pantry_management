@@ -1,6 +1,5 @@
 package academy.mindswap.pantry_management.api;
 
-import academy.mindswap.pantry_management.command.api_dto.MealNameDto;
 import academy.mindswap.pantry_management.command.api_dto.RecipeDto;
 import academy.mindswap.pantry_management.command.api_dto.RecipeNameDto;
 import org.springframework.cache.annotation.CacheEvict;
@@ -43,7 +42,6 @@ public class ApiHandlerImpl implements ApiHandler {
 
         final Set<RecipeNameDto> recipes = new HashSet<>();
 
-        MealNameDto meal = new MealNameDto();
 
         List<List<String>> temp = new ArrayList<>();
 

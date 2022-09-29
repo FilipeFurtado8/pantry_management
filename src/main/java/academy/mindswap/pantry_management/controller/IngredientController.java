@@ -84,7 +84,7 @@ public class IngredientController {
     }
 
     @PutMapping(NAME)
-    private ResponseEntity<IngredientDTO> alterIngredient(@Valid @RequestBody CreateIngredientDTO ingredient, @PathVariable String name) {
+    public ResponseEntity<IngredientDTO> alterIngredient(@Valid @RequestBody CreateIngredientDTO ingredient, @PathVariable String name) {
 
         if (name == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
